@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Anonymous Feedback</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗣️ Campus Voice</h1>
+            <p class="subtitle">Your anonymous feedback platform</p>
+        </header>
+        
+        <div class="feedback-form">
+            <h2>Share Your Feedback Anonymously</h2>
+            
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <option value="">Choose a category</option>
+                        <option value="teaching">Teaching & Learning</option>
+                        <option value="facilities">Campus Facilities</option>
+                        <option value="administration">Administration</option>
+                        <option value="safety">Safety & Security</option>
+                        <option value="events">Events & Activities</option>
+                        <option value="general">General Suggestions</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Feedback:</label>
+                    <textarea id="message" name="message" 
+                              placeholder="Be specific, constructive, and honest..."
+                              required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="priority">Priority Level:</label>
+                    <select id="priority" name="priority">
+                        <option value="low">Low - General suggestion</option>
+                        <option value="medium" selected>Medium - Important issue</option>
+                        <option value="high">High - Needs attention</option>
+                        <option value="critical">Critical - Urgent/Safety issue</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    📨 Submit Anonymously
+                </button>
+            </form>
+            
+            <div class="privacy-note">
+                <h3>🔒 Your Privacy is Protected</h3>
+                <ul>
+                    <li>No login required</li>
+                    <li>No personal information collected</li>
+                    <li>No tracking or cookies</li>
+                    <li>Data automatically deleted after 90 days</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>✅ Thank You!</h2>
+            <p>Your feedback has been submitted successfully and anonymously.</p>
+            <p>Your voice helps make our campus better for everyone.</p>
+            <button id="newFeedback" class="submit-btn">Submit Another Feedback</button>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
