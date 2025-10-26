@@ -250,3 +250,69 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
+
+// 5. Delete single feedback item
+app.delete('/api/admin/feedback/:id', (req, res) => {
+    const { id } = req.params;
+    
+    const sql = 'DELETE FROM feedback WHERE id = ?';
+    
+    db.run(sql, [id], function(err) {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Failed to delete feedback' });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ error: 'Feedback not found' });
+        }
+        
+        console.log(`🗑️ Feedback ${id} deleted`);
+        
+        res.json({
+            success: true,
+            message: `Feedback #${id} deleted successfully`,
+            deletedId: parseInt(id)
+        });
+    });
+});
+
+// 6. Delete all resolved feedback
+app.delete('/api/admin/feedback/resolved', (req, res) => {
+    const sql = 'DELETE FROM feedback WHERE status = ?';
+    
+    db.run(sql, ['resolved'], function(err) {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Failed to delete resolved feedback' });
+        }
+        
+        console.log(`🗑️ Deleted ${this.changes} resolved feedback items`);
+        
+        res.json({
+            success: true,
+            message: `Deleted ${this.changes} resolved feedback items`,
+            deletedCount: this.changes
+        });
+    });
+});
+
+// 7. Delete all feedback (use with caution!)
+app.delete('/api/admin/feedback', (req, res) => {
+    const sql = 'DELETE FROM feedback';
+    
+    db.run(sql, [], function(err) {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Failed to delete all feedback' });
+        }
+        
+        console.log(`🗑️ Deleted ALL feedback (${this.changes} items)`);
+        
+        res.json({
+            success: true,
+            message: `Deleted all feedback (${this.changes} items)`,
+            deletedCount: this.changes
+        });
+    });
+});
