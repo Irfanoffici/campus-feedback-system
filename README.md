@@ -28,7 +28,7 @@ A secure, anonymous feedback platform for college campuses that allows students 
 - Hosting: Ready for college servers
 
 ## 📦 Installation
-1. Clone repository: `git clone [your-repo-url]`
+1. Clone repository: `git clone 'campus-feedback-system'`
 2. Open `frontend/index.html` in browser
 3. For full setup: see deployment guide
 
@@ -39,5 +39,5 @@ A secure, anonymous feedback platform for college campuses that allows students 
 4. Show admin dashboard concept
 
 ## 📞 Contact
-[Your Name] - [Your Email/Contact]
-College: [Your College Name]
+Mohammed Irfan - mailtomohammedirfank@gmail.com
+College: Madras Engineering College
